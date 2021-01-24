@@ -1,0 +1,17 @@
+# Directories
+/dist/
+.terraform/
+_gen/
+node_modules/
+
+# Files
+/local.env
+/TODO
+.DS_Store
+.terraform.lock.hcl
+terragrunt-local.json
+
+# Patterns
+.*.sw[op]
+*-generated.tf
+*.zip

@@ -1,0 +1,30 @@
+baseURL = "/"
+title = "figlet.rocks"
+
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+enableGitInfo = true
+enableMissingTranslationPlaceholders = true
+enableRobotsTXT = true
+
+[deployment]
+order = [".gif$", ".jpg$", ".png$", ".eot$", ".svg$", ".ttf$", ".woff$", ".woff2$", ".css$", ".js$"]
+
+[[deployment.targets]]
+name = "production"
+cloudFrontDistributionID = "E1KSOR5P9PSJSL"
+URL = "s3://figlet.rocks?region=us-west-2"
+
+[[deployment.targets]]
+name = "staging"
+cloudFrontDistributionID = "E6GRBADKFXBCF"
+URL = "s3://preview.figlet.rocks?region=us-east-2"
+
+[languages]
+[languages.en]
+title = "Figlet Online"
+description = "Generate ASCII art using figlet."
+languageName ="English"
+weight = 1
