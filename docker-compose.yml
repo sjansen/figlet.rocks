@@ -1,0 +1,7 @@
+version: '2.1'
+services:
+  figlet:
+    build:
+      context: ./docker/figlet
+    ports:
+     - "8000:8000"

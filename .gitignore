@@ -1,7 +1,8 @@
 # Directories
 /dist/
-.terraform/
+__pycache__/
 _gen/
+.terraform/
 node_modules/
 
 # Files
