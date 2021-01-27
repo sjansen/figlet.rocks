@@ -11,25 +11,6 @@ def start():
 
 
 class Handler(server.BaseHTTPRequestHandler):
-    def do_GET(self):
-        if self.path != "/":
-            self.send_response(404)
-            self.end_headers()
-            return
-
-        self.send_response(200)
-        self.send_header("Content-type", "text/html; charset=utf-8")
-        self.end_headers()
-
-        self.wfile.write(b"<html><head><title>Title goes here.</title></head>")
-        self.wfile.write(
-            b"""<body><form method="post" enctype="multipart/form-data">"""
-        )
-        self.wfile.write(b"""<textarea name="text" cols="80" rows="5"></textarea>""")
-        self.wfile.write(b"""<br /><input type="submit">""")
-        self.wfile.write(b"""</form></body>""")
-        self.wfile.write(b"</html>")
-
     def do_POST(self):
         if self.path != "/":
             self.send_response(404)

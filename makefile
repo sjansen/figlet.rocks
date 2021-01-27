@@ -1,4 +1,4 @@
-.PHONY:  default  check-env  check-working-tree  docker  images  login  push
+.PHONY:  default  check-env  check-working-tree  docker  hugo  images  login  push  start
 
 default: docker
 
@@ -17,6 +17,10 @@ check-working-tree:
 docker:
 	docker-compose build --pull figlet
 	docker-compose up --abort-on-container-exit --exit-code-from=figlet --force-recreate
+
+
+hugo:
+	cd site && hugo server
 
 
 images:
@@ -39,3 +43,7 @@ push: check-env  check-working-tree  login
 	    -t $(TAG) \
 	    docker/figlet/
 	docker push $(TAG)
+
+
+start:
+	foreman start

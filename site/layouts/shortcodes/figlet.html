@@ -1,0 +1,9 @@
+<form
+    method="post"
+    enctype="multipart/form-data"
+    {{ if .Site.IsServer }}action="http://127.0.0.1:8000/"{{ end }}
+>
+  <textarea name="text" cols="80" rows="10"></textarea>
+  <br>
+  <input type="submit">
+<form>
