@@ -1,9 +1,15 @@
-<form
-    method="post"
-    enctype="multipart/form-data"
-    {{ if .Site.IsServer }}action="http://127.0.0.1:8000/"{{ end }}
->
-  <textarea name="text" cols="80" rows="10"></textarea>
-  <br>
-  <input type="submit">
+<form id="form">
+  <textarea id="text" cols="80" rows="10"></textarea>
+  <div>
+    <label for="font">Font</label>
+    <input id="font" type="text" value="slant">
+    <label for="justify">Justify</label>
+    <input id="justify" type="text" value="auto">
+    <label for="width">Width</label>
+    <input id="width" type="number" value="80" min="10" max="1000">
+    <button type="submit">Submit</button>
+  </div>
+{{ if .Site.IsServer }}
+<input id="url" type="hidden" value="http://127.0.0.1:8000/api/figlet/" />
+{{ end }}
 <form>
