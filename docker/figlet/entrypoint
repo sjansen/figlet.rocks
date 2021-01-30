@@ -1,7 +1,9 @@
 #!/bin/sh
 
 if [ -z "$AWS_LAMBDA_RUNTIME_API" ]; then
-  ./app.py
+  export FLASK_APP=api
+  export FLASK_ENV=development
+  exec python -m flask run --host=0.0.0.0
 else
   exec python -m awslambdaric "$@"
 fi

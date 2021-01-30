@@ -15,7 +15,8 @@ function submit(event) {
 
     const data = {
         "text": get(form.elements['text'], "Figlet"),
-        "font": get(form.elements['font'], "slant"),
+        "font": get(form.elements['font'], "standard"),
+        "direction": get(form.elements['direction'], "auto"),
         "justify": get(form.elements['justify'], "auto"),
         "width": parseInt(
             get(form.elements['width'], "80"),

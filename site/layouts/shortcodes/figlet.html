@@ -1,15 +1,78 @@
 <form id="form">
-  <textarea id="text" cols="80" rows="10"></textarea>
+  <textarea id="text" cols="80" rows="10">Figlet</textarea>
   <div>
-    <label for="font">Font</label>
-    <input id="font" type="text" value="slant">
+    <label for="direction">Direction</label>
+    <select id="direction">
+      <option value="auto" selected>auto</option>
+      <option value="left-to-right">left-to-right</option>
+      <option value="right-to-left">right-to-left</option>
+    </select>
     <label for="justify">Justify</label>
-    <input id="justify" type="text" value="auto">
+    <select id="justify">
+      <option value="auto" selected>auto</option>
+      <option value="center">center</option>
+      <option value="left">left</option>
+      <option value="right">right</option>
+    </select>
     <label for="width">Width</label>
     <input id="width" type="number" value="80" min="10" max="1000">
+    <label for="font">Font</label>
+    <select id="font">
+      <option value="acrobatic">acrobatic</option>
+      <option value="alphabet">alphabet</option>
+      <option value="basic">basic</option>
+      <option value="bell">bell</option>
+      <option value="big">big</option>
+      <option value="caligraphy">caligraphy</option>
+      <option value="clb8x8">clb8x8</option>
+      <option value="colossal">colossal</option>
+      <option value="contessa">contessa</option>
+      <option value="cursive">cursive</option>
+      <option value="digital">digital</option>
+      <option value="double">double</option>
+      <option value="eftiwall">eftiwall</option>
+      <option value="epic">epic</option>
+      <option value="fender">fender</option>
+      <option value="fraktur">fraktur</option>
+      <option value="gothic">gothic</option>
+      <option value="graceful">graceful</option>
+      <option value="hollywood">hollywood</option>
+      <option value="ivrit">ivrit</option>
+      <option value="jazmine">jazmine</option>
+      <option value="kban">kban</option>
+      <option value="letters">letters</option>
+      <option value="linux">linux</option>
+      <option value="mini">mini</option>
+      <option value="mirror">mirror</option>
+      <option value="nancyj">nancyj</option>
+      <option value="nvscript">nvscript</option>
+      <option value="ogre">ogre</option>
+      <option value="os2">os2</option>
+      <option value="pebbles">pebbles</option>
+      <option value="poison">poison</option>
+      <option value="rectangles">rectangles</option>
+      <option value="relief">relief</option>
+      <option value="roman">roman</option>
+      <option value="rot13">rot13</option>
+      <option value="script">script</option>
+      <option value="slant">slant</option>
+      <option value="smkeyboard">smkeyboard</option>
+      <option value="speed">speed</option>
+      <option value="standard" selected>standard</option>
+      <option value="thin">thin</option>
+      <option value="ticksslant">ticksslant</option>
+      <option value="tinker-toy">tinker-toy</option>
+      <option value="trek">trek</option>
+      <option value="univers">univers</option>
+      <option value="usaflag">usaflag</option>
+      <option value="whimsy">whimsy</option>
+      <option value="xhelv">xhelv</option>
+      <option value="xsbook">xsbook</option>
+      <option value="xtty">xtty</option>
+    </select>
     <button type="submit">Submit</button>
   </div>
 {{ if .Site.IsServer }}
-<input id="url" type="hidden" value="http://127.0.0.1:8000/api/figlet/" />
+<input id="url" type="hidden" value="http://127.0.0.1:5000/api/figlet/" />
 {{ end }}
 <form>
