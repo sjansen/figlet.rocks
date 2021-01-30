@@ -3,11 +3,11 @@ output "cloudFrontDistributionID" {
 }
 
 output "registry" {
-  value = split("/", aws_ecr_repository.figlet.repository_url)[0]
+  value = split("/", aws_ecr_repository.api.repository_url)[0]
 }
 
 output "repository-url" {
-  value = aws_ecr_repository.figlet.repository_url
+  value = aws_ecr_repository.api.repository_url
 }
 
 output "URL" {

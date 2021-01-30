@@ -7,6 +7,19 @@ data "archive_file" "edge" {
   }
 }
 
+resource "aws_lambda_function" "api" {
+  image_uri    = "${aws_ecr_repository.api.repository_url}:latest"
+  package_type = "Image"
+
+  function_name = replace(local.api_function_name, "/[^-_a-zA-Z0-9]+/", "_")
+  memory_size   = 128
+  publish       = true
+  role          = aws_iam_role.api.arn
+  timeout       = 15
+
+  tags = var.tags
+}
+
 resource "aws_lambda_function" "edge" {
   provider = aws.us-east-1
 
@@ -22,4 +35,12 @@ resource "aws_lambda_function" "edge" {
   timeout       = 3
 
   tags = var.tags
+}
+
+resource "aws_lambda_permission" "apigw" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.api.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = aws_apigatewayv2_api.api.execution_arn
 }

@@ -79,6 +79,38 @@ resource "aws_cloudfront_distribution" "cdn" {
     bucket          = aws_s3_bucket.logs.bucket_regional_domain_name
   }
 
+  ordered_cache_behavior {
+    path_pattern     = "/api/*"
+    allowed_methods  = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+    cached_methods   = ["GET", "HEAD", "OPTIONS"]
+    target_origin_id = "APIGW"
+
+    compress               = true
+    default_ttl            = 300
+    max_ttl                = 3600
+    min_ttl                = 0
+    viewer_protocol_policy = "https-only"
+
+    forwarded_values {
+      headers      = ["Authorization"]
+      query_string = true
+      cookies {
+        forward = "all"
+      }
+    }
+  }
+
+  origin {
+    domain_name = trimsuffix(trimprefix(aws_apigatewayv2_stage.api.invoke_url, "https://"), "/")
+    origin_id   = "APIGW"
+    custom_origin_config {
+      http_port              = "80"
+      https_port             = "443"
+      origin_protocol_policy = "https-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+
   origin {
     domain_name = aws_s3_bucket.media.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
