@@ -24,6 +24,7 @@ function submit(event) {
         )
     };
 
+    result.classList.add("spinner")
     fetch(url, {
         method: 'POST',
         headers: {
@@ -32,5 +33,8 @@ function submit(event) {
         body: JSON.stringify(data)
     })
     .then(response => response.json())
-    .then(data => result.innerText = data.text);
+    .then(data => {
+        result.innerText = data.text
+        result.classList.remove("spinner")
+    });
 }

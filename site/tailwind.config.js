@@ -11,7 +11,10 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active'],
+      transform: ['hover', 'focus'],
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
