@@ -1,7 +1,8 @@
 .PHONY:  default  all  prod  production  staging
 
 
-default: staging
+default:
+	hugo server
 
 
 all: staging production
@@ -14,7 +15,7 @@ production:
 	@echo =============================
 	@echo Updating https://figlet.rocks
 	@echo =============================
-	HUGO_ENV="production" hugo
+	HUGO_ENV="production" NODE_ENV="production" hugo
 	hugo deploy --target $@
 
 
@@ -22,5 +23,5 @@ staging:
 	@echo =====================================
 	@echo Updating https://preview.figlet.rocks
 	@echo =====================================
-	hugo
+	NODE_ENV="production" hugo
 	hugo deploy --target $@

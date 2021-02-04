@@ -1,0 +1,15 @@
+{
+  "name": "figlet.rocks",
+  "version": "0.1.0-dev",
+  "description": "Online Figlet",
+  "repository": "https://github.com/sjansen/figlet.rocks",
+  "author": "Stuart Jansen <sjansen@buscaluz.org>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.2",
+    "@tailwindcss/forms": "^0.2.1"
+  }
+}

@@ -1,6 +1,6 @@
 .PHONY:  default  check-env  check-working-tree  docker  hugo  images  login  push  start
 
-default: docker
+default: start
 
 
 check-env:
