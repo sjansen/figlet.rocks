@@ -1,5 +1,5 @@
 locals {
-  aws_version        = "~> 3.21"
+  aws_version        = "~> 3.27"
   terragrunt_version = "~> 0.27.1"
 
   env  = path_relative_to_include()

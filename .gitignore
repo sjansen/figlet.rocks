@@ -10,6 +10,7 @@ node_modules/
 /TODO
 .DS_Store
 .terraform.lock.hcl
+terraform.tfvars
 terragrunt-local.json
 
 # Patterns

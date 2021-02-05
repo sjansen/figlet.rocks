@@ -1,15 +1,12 @@
 module "app" {
   source = "../../modules/app"
-  
-  dns_name = "figlet.rocks"
-  dns_zone = "figlet.rocks"
-  tags = {
-    Environment = local.env
-    Project     = local.proj
-  }
+
+  dns_name = var.dns_name
+  dns_zone = var.dns_zone
+  tags     = local.tags
 
   providers = {
-    aws = aws
+    aws           = aws
     aws.us-east-1 = aws.us-east-1
   }
 }
