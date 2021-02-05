@@ -2,6 +2,10 @@ output "cloudFrontDistributionID" {
   value = aws_cloudfront_distribution.cdn.id
 }
 
+output "ecr_arn" {
+  value = aws_ecr_repository.api.arn
+}
+
 output "registry" {
   value = split("/", aws_ecr_repository.api.repository_url)[0]
 }
