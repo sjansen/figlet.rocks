@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "edgelambda" {
 }
 
 resource "aws_iam_role" "api" {
-  name               = local.api_function_name
+  name               = local.api_iam_role_name
   assume_role_policy = data.aws_iam_policy_document.lambda.json
 
   tags = var.tags

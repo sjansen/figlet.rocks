@@ -10,14 +10,17 @@ data "archive_file" "edge" {
 resource "aws_lambda_function" "api" {
   image_uri    = "${aws_ecr_repository.api.repository_url}:latest"
   package_type = "Image"
+  tags         = var.tags
 
-  function_name = replace(local.api_function_name, "/[^-_a-zA-Z0-9]+/", "_")
+  function_name = local.api_function_name
   memory_size   = 128
   publish       = true
   role          = aws_iam_role.api.arn
   timeout       = 15
 
-  tags = var.tags
+  depends_on = [
+    aws_cloudwatch_log_group.api,
+  ]
 }
 
 resource "aws_lambda_function" "edge" {
