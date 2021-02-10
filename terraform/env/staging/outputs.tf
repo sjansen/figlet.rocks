@@ -10,6 +10,10 @@ output "registry" {
   value = module.app.registry
 }
 
+output "repository-arn" {
+  value = module.app.repository-arn
+}
+
 output "repository-url" {
   value = module.app.repository-url
 }

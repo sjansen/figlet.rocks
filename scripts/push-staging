@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e -u -o pipefail
+
+REPO=$(scripts/get-ecr-repository-url)
+NAME=$(echo $REPO | sed 's|.*/||')
+TAG=${REPO}:$(git rev-parse HEAD)
+
+docker build \
+    --compress --force-rm --pull \
+    -t $TAG \
+    docker/figlet/
+
+docker push $TAG
+
+docker tag $TAG ${REPO}:latest
+
+aws ecr batch-delete-image \
+    --repository-name $NAME \
+    --image-ids imageTag=latest
+
+docker push ${REPO}:latest

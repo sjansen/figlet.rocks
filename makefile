@@ -37,12 +37,7 @@ login: check-env
 
 
 push: check-env  check-working-tree  login
-	$(eval TAG := $(shell echo `scripts/get-ecr-repository-url`:`git rev-parse HEAD`))
-	docker build \
-	    --compress --force-rm --pull \
-	    -t $(TAG) \
-	    docker/figlet/
-	docker push $(TAG)
+	scripts/push-staging
 
 
 start:

@@ -17,6 +17,9 @@ resource "aws_lambda_function" "api" {
   publish       = true
   role          = aws_iam_role.api.arn
   timeout       = 15
+  tracing_config {
+    mode = "Active"
+  }
 
   depends_on = [
     aws_cloudwatch_log_group.api,

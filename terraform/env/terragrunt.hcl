@@ -1,6 +1,6 @@
 locals {
   aws_version        = "~> 3.27"
-  terragrunt_version = "~> 0.27.1"
+  terragrunt_version = "~> 0.28.2"
 
   env  = path_relative_to_include()
   proj = "figlet.rocks"

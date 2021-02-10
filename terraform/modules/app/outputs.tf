@@ -10,6 +10,10 @@ output "registry" {
   value = split("/", aws_ecr_repository.api.repository_url)[0]
 }
 
+output "repository-arn" {
+  value = aws_ecr_repository.api.arn
+}
+
 output "repository-url" {
   value = aws_ecr_repository.api.repository_url
 }
