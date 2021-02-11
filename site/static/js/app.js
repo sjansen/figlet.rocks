@@ -14,7 +14,7 @@ function submit(event) {
         "/api/figlet/";
 
     const data = {
-        "text": get(form.elements['text'], "Figlet"),
+        "text": get(form.elements['text'], "FIGlet"),
         "font": get(form.elements['font'], "standard"),
         "direction": get(form.elements['direction'], "auto"),
         "justify": get(form.elements['justify'], "auto"),

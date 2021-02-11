@@ -1,7 +1,7 @@
 {
   "name": "figlet.rocks",
   "version": "0.1.0-dev",
-  "description": "Online Figlet",
+  "description": "Online FIGlet",
   "repository": "https://github.com/sjansen/figlet.rocks",
   "author": "Stuart Jansen <sjansen@buscaluz.org>",
   "license": "MIT",
