@@ -3,9 +3,22 @@ from flask.views import MethodView
 from pyfiglet import Figlet
 
 
-def render(text, font="standard", direction="auto", justify="auto", width=80):
+def render(
+    text,
+    direction="auto",
+    flip=False,
+    font="standard",
+    justify="auto",
+    reverse=False,
+    width=80,
+):
     f = Figlet(font=font, direction=direction, justify=justify, width=width)
-    return f.renderText(text)
+    r = f.renderText(text)
+    if flip:
+        r = r.flip()
+    if reverse:
+        r = r.reverse()
+    return r
 
 
 class RenderAPI(MethodView):
@@ -25,10 +38,12 @@ class RenderAPI(MethodView):
         resp = jsonify(
             {
                 "text": render(
-                    data.get("text", "Figlet"),
-                    font=data.get("font"),
+                    data.get("text", "FIGlet"),
                     direction=data.get("direction"),
+                    flip=data.get("flip"),
+                    font=data.get("font"),
                     justify=data.get("justify"),
+                    reverse=data.get("reverse"),
                     width=data.get("width"),
                 ),
             }

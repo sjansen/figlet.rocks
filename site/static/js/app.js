@@ -4,7 +4,15 @@ form.onsubmit = submit;
 const result = document.getElementById('result');
 
 function get(e, d) {
-    return e && e.value ? e.value : d;
+    if (!e || !e.type) {
+        return d;
+    }
+    switch (e.type) {
+    case 'checkbox':
+        return e.checked;
+    default:
+        return e.value ? e.value : d;
+    }
 }
 
 function submit(event) {
@@ -14,10 +22,12 @@ function submit(event) {
         "/api/figlet/";
 
     const data = {
-        "text": get(form.elements['text'], "FIGlet"),
-        "font": get(form.elements['font'], "standard"),
         "direction": get(form.elements['direction'], "auto"),
+        "flip": get(form.elements['flip'], false),
+        "font": get(form.elements['font'], "standard"),
         "justify": get(form.elements['justify'], "auto"),
+        "reverse": get(form.elements['reverse'], false),
+        "text": get(form.elements['text'], "FIGlet"),
         "width": parseInt(
             get(form.elements['width'], "80"),
             10
