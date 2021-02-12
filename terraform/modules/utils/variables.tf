@@ -12,6 +12,14 @@ variable "ecr_src_arn" {
   description = "e.g. arn:aws:ecr:us-east-1:123456789012:repository/preview.figlet.rocks"
 }
 
+variable "function_arn" {
+  type = string
+}
+
+variable "function_name" {
+  type = string
+}
+
 variable "tags" {
   type = map(string)
 }

@@ -2,6 +2,7 @@
 
 set -e -u -o pipefail
 
+FUNC=$(scripts/get-function-name)
 REPO=$(scripts/get-ecr-repository-url)
 NAME=$(echo $REPO | sed 's|.*/||')
 TAG=${REPO}:$(git rev-parse HEAD)
@@ -22,5 +23,5 @@ aws ecr batch-delete-image \
 docker push ${REPO}:latest
 
 aws lambda update-function-code \
-    --function-name preview_figlet_rocks \
+    --function-name ${FUNC} \
     --image-uri ${REPO}:latest

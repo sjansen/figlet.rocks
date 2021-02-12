@@ -10,6 +10,37 @@ data "aws_iam_policy_document" "AssumeRole-codebuild" {
 
 data "aws_iam_policy_document" "codebuild" {
   statement {
+    actions   = ["ecr:GetAuthorizationToken"]
+    resources = ["*"]
+  }
+  statement {
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
+    ]
+    resources = [var.ecr_src_arn]
+  }
+  statement {
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchDeleteImage",
+      "ecr:CompleteLayerUpload",
+      "ecr:DescribeImages",
+      "ecr:InitiateLayerUpload",
+      "ecr:ListImages",
+      "ecr:ListTagsForResource",
+      "ecr:PutImage",
+      "ecr:TagResource",
+      "ecr:UploadLayerPart",
+    ]
+    resources = [var.ecr_dst_arn]
+  }
+  statement {
+    actions   = ["lambda:UpdateFunctionCode"]
+    resources = [var.function_arn]
+  }
+  statement {
     actions = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
@@ -19,32 +50,6 @@ data "aws_iam_policy_document" "codebuild" {
       aws_cloudwatch_log_group.codebuild.arn,
       "${aws_cloudwatch_log_group.codebuild.arn}:log-stream:*",
     ]
-  }
-  statement {
-    actions   = ["ecr:GetAuthorizationToken"]
-    resources = ["*"]
-  }
-  statement {
-    actions = [
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:BatchGetImage",
-      "ecr:BatchCheckLayerAvailability"
-    ]
-    resources = [var.ecr_src_arn]
-  }
-  statement {
-    actions = [
-      "ecr:ListTagsForResource",
-      "ecr:UploadLayerPart",
-      "ecr:ListImages",
-      "ecr:PutImage",
-      "ecr:CompleteLayerUpload",
-      "ecr:DescribeImages",
-      "ecr:TagResource",
-      "ecr:InitiateLayerUpload",
-      "ecr:BatchCheckLayerAvailability"
-    ]
-    resources = [var.ecr_dst_arn]
   }
 }
 

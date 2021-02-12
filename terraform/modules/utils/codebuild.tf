@@ -21,7 +21,7 @@ resource "aws_codebuild_project" "promote-docker-image" {
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "aws/codebuild/standard:3.0"
+    image                       = "aws/codebuild/standard:5.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
     privileged_mode             = true
@@ -44,7 +44,9 @@ phases:
       - "docker pull ${local.docker_src_image}"
       - "docker tag ${local.docker_src_image} ${local.docker_dst_image}"
       - "aws ecr get-login-password --region ${local.ecr_dst["region"]} | docker login --username AWS --password-stdin ${local.docker_dst_registry}"
+      - "aws ecr batch-delete-image --region ${local.ecr_dst["region"]} --repository-name ${local.ecr_dst["image"]} --image-ids imageTag=latest"
       - "docker push ${local.docker_dst_image}"
+      - "aws lambda update-function-code --region ${local.ecr_dst["region"]} --function-name ${var.function_name} --image-uri ${local.docker_dst_image}"
 EOF
   }
 }

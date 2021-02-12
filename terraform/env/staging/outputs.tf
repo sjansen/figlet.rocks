@@ -6,6 +6,10 @@ output "ecr_arn" {
   value = module.app.ecr_arn
 }
 
+output "function-name" {
+  value = module.app.function_name
+}
+
 output "registry" {
   value = module.app.registry
 }
