@@ -20,3 +20,7 @@ aws ecr batch-delete-image \
     --image-ids imageTag=latest
 
 docker push ${REPO}:latest
+
+aws lambda update-function-code \
+    --function-name preview_figlet_rocks \
+    --image-uri ${REPO}:latest

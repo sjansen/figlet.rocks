@@ -1,4 +1,5 @@
-.PHONY:  default  check-env  check-working-tree  docker  hugo  images  login  push  start
+.PHONY:  default  check-env  check-working-tree  docker  hugo
+.PHONY:  images  login  push  push-docker  push-hugo  start
 
 default: start
 
@@ -36,8 +37,15 @@ login: check-env
 	    `scripts/get-ecr-registry`
 
 
-push: check-env  check-working-tree  login
+push: push-docker push-hugo
+
+
+push-docker: check-env  check-working-tree  login
 	scripts/push-staging
+
+
+push-hugo:
+	cd site && $(MAKE) staging
 
 
 start:
