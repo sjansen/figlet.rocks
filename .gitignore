@@ -1,11 +1,14 @@
 # Directories
+/.idea/
+/.vscode/
 /dist/
+.terraform/
 __pycache__/
 _gen/
-.terraform/
 node_modules/
 
 # Files
+/.envrc
 /local.env
 /TODO
 .DS_Store

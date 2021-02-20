@@ -33,13 +33,24 @@
 </style>
 </head>
 <body>
-  <div class="p-8 min-h-screen flex flex-col">
+  <div class="p-4 sm:p-8 min-h-screen flex flex-col">
     <main aria-role="main" class="flex flex-col flex-grow">
 {{ block "main" . }}
 {{ end }}
     </main>
     <div class="flex-grow-0">
 {{ block "footer" . }}
+<div class="mt-4 sm:flex sm:flex-row sm:justify-around">
+  <div>
+    <a href="http://www.figlet.org/">About FIGlet</a>
+  </div>
+  <div>
+    <a href="https://github.com/sjansen/figlet.rocks/">
+    <img class="inline align-middle" height="16" width="16" src="/images/GitHub-Mark-32px.png" alt="GitHub logo" />
+      <span class="inline-block align-middle">sjansen/figlet.rocks</span>
+    </a>
+  </div>
+</div>
 {{ end }}
     </div>
   </div>
