@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "FIGlet.Rocks"
+title = "FIGlet.rocks"
 
 contentDir = "content/en"
 defaultContentLanguage = "en"
@@ -24,7 +24,7 @@ URL = "s3://preview.figlet.rocks?region=us-east-2"
 
 [languages]
 [languages.en]
-title = "FIGlet.Rocks"
+title = "FIGlet.rocks"
 description = "Generate ASCII art using figlet."
 languageName ="English"
 weight = 1

@@ -1,5 +1,18 @@
 +++
-title = "FIGlet.Rocks"
+title = "FIGlet.rocks"
 +++
 
-{{< figlet >}}
+<div class="flex flex-row items-center">
+  <h1 class="text-3xl">FIGlet.rocks</h1>
+  <p class="ml-8 invisible sm:visible">Online ASCII Art Text Banner Generator</p>
+</div>
+<form id="form" action="">
+  <div class="mt-6 md:flex md:flex-row-reverse">
+
+{{< figlet-text >}}
+{{< figlet-options >}}
+
+  </div>
+</form>
+
+{{< figlet-result >}}
