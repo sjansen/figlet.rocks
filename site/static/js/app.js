@@ -28,6 +28,7 @@ function submit(event) {
         "justify": get(form.elements['justify'], "auto"),
         "reverse": get(form.elements['reverse'], false),
         "text": get(form.elements['text'], "FIGlet"),
+        "vtrim": get(form.elements['vtrim'], false),
         "width": parseInt(
             get(form.elements['width'], "80"),
             10
