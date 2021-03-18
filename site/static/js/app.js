@@ -43,9 +43,21 @@ function submit(event) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(
+                "Unexpected status code: "+response.status
+            )
+        }
+        return response.json()
+    })
     .then(data => {
-        result.innerText = data.text
         result.classList.remove("spinner")
+        result.innerText = data.text
+    })
+    .catch(error => {
+        result.classList.remove("spinner")
+        console.error(error);
+        result.innerText = "ERROR: text rendering failed"
     });
 }

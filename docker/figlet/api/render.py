@@ -43,7 +43,7 @@ class RenderAPI(MethodView):
         )
         flip = data.get("flip", False)
         reverse = data.get("reverse", False)
-        vtrim = data.get("vtrim", True)
+        vtrim = data.get("vtrim", False)
         if vtrim:
             sep = "\n\n"
         else:
