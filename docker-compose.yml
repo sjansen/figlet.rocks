@@ -4,4 +4,4 @@ services:
     build:
       context: ./docker/figlet
     ports:
-     - "5000:5000"
+     - "8000:5000"

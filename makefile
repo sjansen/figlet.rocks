@@ -21,7 +21,7 @@ docker:
 
 
 hugo:
-	cd site && hugo server
+	cd site && $(MAKE) start
 
 
 images:

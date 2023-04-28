@@ -1,8 +1,7 @@
 .PHONY:  default  all  prod  production  staging
 
 
-default:
-	hugo server
+default: start
 
 
 all: staging production
@@ -25,3 +24,7 @@ staging:
 	@echo =====================================
 	NODE_ENV="production" hugo
 	hugo deploy --target $@
+
+
+start:
+	hugo server -p 8080
